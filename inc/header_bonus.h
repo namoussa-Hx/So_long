@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:35:51 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/07 19:59:15 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:09:45 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void				handle_movement(t_data *data);
 int					is_exit(t_data *data);
 int					handle_collect1(t_data *data, int map_x, int map_y);
 int					handle_collect2(t_data *data, int map_x, int map_y);
-int					ft_move_collect(t_player *player, t_data *data);
+int					is_collect(t_player *player, t_data *data);
 int					ft_read_map(t_data *data, char *file);
 t_enemy				*ft_init_enemies(t_data *data);
 int					ft_validate_map(t_data *data);

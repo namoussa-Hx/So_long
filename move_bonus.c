@@ -6,13 +6,13 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:53:55 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/07 19:59:41 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:09:36 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/header_bonus.h"
 
-int	ft_move_collect(t_player *player, t_data *data)
+int	is_collect(t_player *player, t_data *data)
 {
 	int	map_x;
 	int	map_y;
@@ -65,16 +65,15 @@ int	is_wall(t_player *player, t_data *data)
 	if (data->new_y % ASSET_SIZ > 0 && (data->game->map[map_y][map_x] == '1' || \
 	data->game->map[map_y + 1][map_x] == '1'))
 		return (-1);
-	if (data->new_x % ASSET_SIZ > 0 && (data->game->map[map_y][map_x + 1] == '1'))
+	if (data->new_x % ASSET_SIZ > 0 && \
+	(data->game->map[map_y][map_x + 1] == '1'))
 		return (-1);
 	if (data->new_x % ASSET_SIZ > 0 && data->new_y % ASSET_SIZ > 0
 		&& data->game->map[map_y + 1][map_x + 1] == '1')
 		return (-1);
 	if (data->game->map[map_y][map_x] == '1')
 		return (-1);
-	if (is_exit(data))
-		return (-1);
-	if (ft_move_collect(player, data))
+	if (is_exit(data) || is_collect(player, data))
 		return (-1);
 	return (0);
 }
