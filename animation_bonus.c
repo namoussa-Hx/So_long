@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:34:54 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/06 17:46:43 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:37:22 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,26 @@ int	ft_animation(t_data *data)
 	ft_collect_animation(data);
 	ft_enemy_anim(data);
 	return (0);
+}
+
+void	handle_conditions(t_data *data, int enemy_x, int enemy_y)
+{
+	int			map_x;
+	int			map_y;
+	t_player	*player;
+
+	player = data->player;
+	data->new_x = player->pos_x;
+	data->new_y = player->pos_y;
+	map_x = data->new_x / ASSET_SIZ;
+	map_y = data->new_y / ASSET_SIZ;
+	if (data->new_y % ASSET_SIZ
+		&& data->game->map[enemy_y][enemy_x] == data->game->map[map_y
+		+ 1][map_x])
+	{
+		ft_game_msg(data, 'V');
+		ft_exit(data);
+	}
 }
 
 void	ft_put_img_if_valid(char *img, int x, int y, t_data *data)

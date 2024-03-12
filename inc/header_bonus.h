@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:35:51 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/08 15:09:45 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:36:31 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ typedef struct s_game
 	int				height;
 	int				player_x;
 	int				player_y;
+	int				exit_x;
+	int				exit_y;
 	int				collect;
 	int				moves;
 	int				enemy_num;
@@ -144,7 +146,10 @@ typedef struct s_data
 
 void				is_enemy(t_player *player, t_data *data);
 void				handle_movement(t_data *data);
+void				handle_conditions(t_data *data, int enemy_x, int enemy_y);
 int					is_exit(t_data *data);
+int					check_flood_fill2(t_data *data);
+void				flood_fill2(t_data *data, int x, int y);
 int					handle_collect1(t_data *data, int map_x, int map_y);
 int					handle_collect2(t_data *data, int map_x, int map_y);
 int					is_collect(t_player *player, t_data *data);

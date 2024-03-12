@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:52:05 by mrhyhorn          #+#    #+#             */
-/*   Updated: 2024/03/03 21:10:01 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:46:28 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ typedef struct s_game
 	int		height;
 	int		player_x;
 	int		player_y;
+	int		exit_x;
+	int		exit_y;
+	int		exit;
 	int		moves;
 	int		collect;
 }			t_game;
@@ -72,6 +75,8 @@ typedef struct s_data
 }			t_data;
 
 int			ft_read_map(t_data *data, char *file);
+int			check_flood_fill2(t_data *data);
+void		flood_fill2(t_data *data, int x, int y);
 void		flood_fill(t_data *data, int x, int y);
 int			check_flood_fill(t_data *data);
 int			ft_validate_map(t_data *data);

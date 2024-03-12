@@ -6,11 +6,20 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 14:00:20 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/04 15:40:21 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:52:44 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/header_bonus.h"
+
+int	check_conditions(char ch, int count)
+{
+	if ((ch == 'P' || ch == 'E') && (count > 1 || count == 0))
+		return (0);
+	else if (count == 0)
+		return (0);
+	return (1);
+}
 
 int	ft_check_char(t_data *data, char ch, int *count)
 {
@@ -21,24 +30,24 @@ int	ft_check_char(t_data *data, char ch, int *count)
 	h = -1;
 	while (++h < data->game->height)
 	{
-		w = 0;
-		while (data->game->map[h][w] != '\0')
+		w = -1;
+		while (data->game->map[h][++w] != '\0')
 		{
 			if (data->game->map[h][w] == 'P')
 			{
 				data->game->player_x = w;
 				data->game->player_y = h;
 			}
+			if (data->game->map[h][w] == 'E')
+			{
+				data->game->exit_x = w;
+				data->game->exit_y = h;
+			}
 			if (data->game->map[h][w] == ch)
 				*count += 1;
-			w++;
 		}
 	}
-	if (ch == 'P' && (*count > 1 || *count == 0))
-		return (0);
-	else if (*count == 0)
-		return (0);
-	return (1);
+	return (check_conditions(ch, *count));
 }
 
 int	ft_check_chars(t_data *data)
@@ -95,7 +104,7 @@ int	ft_validate_map(t_data *data)
 	h = 0;
 	while (h < data->game->height)
 	{
-		if ((len != (ft_strlen_nl(data->game->map[h]))) || (len < height))
+		if (len != (ft_strlen_nl(data->game->map[h])))
 			return (INVALID_RECT);
 		h++;
 	}

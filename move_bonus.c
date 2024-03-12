@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:53:55 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/08 15:09:36 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:45:13 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,20 @@ int	is_collect(t_player *player, t_data *data)
 	player->pos_y = data->new_y;
 	data->game->player_x = player->pos_x / ASSET_SIZ;
 	data->game->player_y = player->pos_y / ASSET_SIZ;
-	if (handle_collect1(data, map_x, map_y) == -1)
-		return (-1);
-	if (handle_collect2(data, map_x, map_y) == -1)
-		return (-1);
+	if (data->game->map[map_y][map_x] == 'C')
+	{
+		ft_put_img(EMPTY, map_x, map_y, data);
+		data->game->map[map_y][map_x] = '0';
+		data->game->collect--;
+		return (0);
+	}
+	if (data->new_x % ASSET_SIZ > 0 || data->new_y % ASSET_SIZ > 0)
+	{
+		if (handle_collect1(data, map_x, map_y) == -1)
+			return (-1);
+		else if (handle_collect2(data, map_x, map_y) == -1)
+			return (-1);
+	}
 	return (0);
 }
 
@@ -65,8 +75,8 @@ int	is_wall(t_player *player, t_data *data)
 	if (data->new_y % ASSET_SIZ > 0 && (data->game->map[map_y][map_x] == '1' || \
 	data->game->map[map_y + 1][map_x] == '1'))
 		return (-1);
-	if (data->new_x % ASSET_SIZ > 0 && \
-	(data->game->map[map_y][map_x + 1] == '1'))
+	if (data->new_x % ASSET_SIZ > 0 && (data->game->map[map_y][map_x
+			+ 1] == '1'))
 		return (-1);
 	if (data->new_x % ASSET_SIZ > 0 && data->new_y % ASSET_SIZ > 0
 		&& data->game->map[map_y + 1][map_x + 1] == '1')

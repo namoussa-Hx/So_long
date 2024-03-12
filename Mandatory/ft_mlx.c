@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 14:16:40 by mrhyhorn          #+#    #+#             */
-/*   Updated: 2024/03/05 17:31:13 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:52:51 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void	ft_mlx(t_data *data)
 		print_error_free("Error\n", data);
 	ft_render(data);
 	mlx_key_hook(data->mlx_win, ft_key, data);
+	mlx_hook(data->mlx_win, 17, 0, ft_exit, data);
 	mlx_loop(data->mlx);
 }
