@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:53:55 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/12 19:45:13 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/15 02:17:05 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	left_right_player(t_data *data)
 	if (is_wall(player, data))
 		return ;
 	is_enemy(player, data);
-	ft_print_moves(data);
 	if ((data->game->current_key == LEFT && data->new_x < 0)
 		|| (data->game->current_key == RIGHT && data->new_x > (data->game->width
 				- 1) * ASSET_SIZ))
@@ -119,7 +118,6 @@ void	up_down_player(t_data *data)
 	if (is_wall(player, data))
 		return ;
 	is_enemy(player, data);
-	ft_print_moves(data);
 	if ((data->game->current_key == UP && data->new_y < 0)
 		|| (data->game->current_key == DOWN && data->new_y > (data->game->height
 				- 1) * ASSET_SIZ))

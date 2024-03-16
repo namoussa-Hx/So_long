@@ -39,7 +39,7 @@ SRCS_B = so_long_bonus.c \
 	   check_collect_bonus.c\
 	   handle_enemy.c
 
-MLX = -Lminilibx -lmlx -framework OpenGL -framework AppKit
+MLX =  -Lminilibx -lmlx -framework OpenGL -framework AppKit
 
 
 
@@ -48,7 +48,7 @@ GREEN 	= 	\033[0;32m
 YELLOW	=	\033[0;33m
 
 CC = cc
-CFLAGS =  -Wall -Wextra -Werror
+CFLAGS =  -Wall -Wextra -Werror -fsanitize=address -g3
 
 LIBFT_MAKE = make -C libft
 MINILIBX_MAKE = make -C minilibx
@@ -59,7 +59,7 @@ all: $(NAME)
 $(NAME): $(SRCS_M)
 	$(LIBFT_MAKE)
 	$(MINILIBX_MAKE)
-	$(CC) $(CFLAGS) $(SRCS_M) -L libft -lft -L minilibx $(MLX) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS_M) -L libft -lft -Lminilibx $(MLX) -o $(NAME)
 	@echo "$(YELLOW)libmlx.a $(GREEN) --> DONE!"
 	@echo "$(YELLOW)libft.a $(GREEN) --> DONE!"
 	@echo "$(YELLOW)$(NAME)$(GREEN) --> DONE!"
@@ -69,7 +69,7 @@ bonus: $(NAME_B)
 $(NAME_B): $(SRCS_B)
 	$(LIBFT_MAKE)
 	$(MINILIBX_MAKE)
-	$(CC) $(CFLAGS) $(SRCS_B) -L libft -lft -L minilibx $(MLX) -o $(NAME_B)
+	$(CC)  $(CFLAGS) $(SRCS_B) -L libft -lft -Lminilibx $(MLX) -o $(NAME_B)
 	@echo "$(YELLOW)libmlx.a $(GREEN) --> DONE!"
 	@echo "$(YELLOW)libft.a $(GREEN) --> DONE!"
 	@echo "$(YELLOW)$(NAME_B)$(GREEN) --> DONE!"

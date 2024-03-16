@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 14:16:40 by mrhyhorn          #+#    #+#             */
-/*   Updated: 2024/03/12 21:52:51 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/16 15:51:37 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_move_collect(int x, int y, t_data *data)
 
 void	ft_move(int x, int y, t_data *data)
 {
+	ft_print_moves(data);
 	if (data->game->map[y][x] == '1')
 		return ;
 	else if (data->game->map[y][x] == 'E' && data->game->collect != 0)
@@ -45,7 +46,6 @@ void	ft_move(int x, int y, t_data *data)
 	data->game->player_x = x;
 	data->game->player_y = y;
 	data->game->moves += 1;
-	ft_print_moves(data);
 }
 
 int	ft_key(int key, t_data *data)

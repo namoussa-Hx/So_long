@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 21:01:46 by mrhyhorn          #+#    #+#             */
-/*   Updated: 2024/03/11 16:24:53 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:28:43 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_display_error(int e, t_data *data)
 	else if (e == INVALID_CHARS)
 		print_error_free("Error\nMap has invalid characters\n", data);
 	else if (e == PLAYER_ERROR)
-		print_error_free("Error\nMultiple players\n", data);
+		print_error_free("Error\nplayers\n", data);
 	else if (e == EXIT_ERROR)
 		print_error_free("Error\n exit\n", data);
 	else if (e == COLLECT_ERROR)

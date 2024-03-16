@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:12:04 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/12 19:43:59 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/16 15:48:17 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_key(int key, t_data *data)
 {
 	t_player	*player;
 
+	ft_print_moves(data);
 	if (key == ESC)
 	{
 		ft_game_msg(data, 'q');

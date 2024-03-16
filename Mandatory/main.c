@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 14:16:45 by mrhyhorn          #+#    #+#             */
-/*   Updated: 2024/03/09 22:09:09 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/16 15:39:59 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int	main(int ac, char **av)
 	ft_init_game(data.game);
 	ft_read_map(&data, av[1]);
 	ft_mlx(&data);
-	ft_exit(&data);
 	return (0);
 }

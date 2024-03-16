@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 14:00:20 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/12 19:52:44 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/16 15:50:54 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ int	ft_validate_map(t_data *data)
 
 	len = ft_strlen_nl(data->game->map[0]);
 	height = data->game->height;
+	if ((height * ASSET_SIZ) > 2160 || (len * ASSET_SIZ) > 2460)
+		print_error_free("Error\nmax size\n", data);
 	h = 0;
 	while (h < data->game->height)
 	{

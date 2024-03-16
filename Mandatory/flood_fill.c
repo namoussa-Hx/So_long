@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:03:42 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/12 19:46:51 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/16 15:46:56 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	flood_fill(t_data *data, int x, int y)
 	char	**map;
 
 	map = data->game->map;
-	if (x > data->game->width || x < 0 || y > data->game->height || y < 0)
+	if (x >= data->game->width || x < 0 || y >= data->game->height || y < 0)
 		return ;
 	if (map[y][x] == '1' || map[y][x] == 'O' || map[y][x] == 'c'
 		|| map[y][x] == 'E')
@@ -37,14 +37,17 @@ void	flood_fill2(t_data *data, int x, int y)
 	char	**map;
 
 	map = data->game->map;
-	if (x > data->game->width || x < 0 || y > data->game->height || y < 0)
+	if (x >= data->game->width || x < 0 || y >= data->game->height || y < 0)
 		return ;
-	if (map[y][x] == '1' || map[y][x] == 's' || map[y][x] == 'y')
+	if (map[y][x] == '1' || map[y][x] == 's' || map[y][x] == 'y'
+		|| map[y][x] == 'c')
 		return ;
 	else if (map[y][x] == 'P')
 		map[y][x] = 'y';
 	else if (map[y][x] == '0')
 		map[y][x] = 's';
+	else if (map[y][x] == 'C')
+		map[y][x] = 'c';
 	flood_fill2(data, x, y + 1);
 	flood_fill2(data, x + 1, y);
 	flood_fill2(data, x, y - 1);
@@ -96,6 +99,8 @@ int	check_flood_fill2(t_data *data)
 				map[y][x] = 'P';
 			else if (map[y][x] == 's')
 				map[y][x] = '0';
+			else if (map[y][x] == 'c')
+				map[y][x] = 'C';
 		}
 		y++;
 	}

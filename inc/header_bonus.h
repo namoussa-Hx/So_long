@@ -6,7 +6,7 @@
 /*   By: namoussa <namoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 15:35:51 by namoussa          #+#    #+#             */
-/*   Updated: 2024/03/12 19:36:31 by namoussa         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:46:37 by namoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 // #include "get_next_line.h"
 # include "../minilibx/mlx.h"
+// #include <mlx.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
